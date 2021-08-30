@@ -1,0 +1,101 @@
+<!-- Trevor Foland -->
+
+<%_ const colors = ['red', 'yellow', 'green', 'blue', 'purple', 'orange', 'brown', 'aquamarine'] _%>
+<%_ const rowAmt = 6 _%>
+<%_ const colAmt = 22 _%>
+<%_ const wDiceAmt = Math.ceil(colAmt / 6) _%>
+<%_ let i = 0 _%>
+<%_ let j = 0 _%>
+<%_ let sum = 0 _%>
+<html>
+<head>
+
+<link href="/css/quixx.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Baloo Chettan' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Carter One' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Slackey' rel='stylesheet'>
+<style>
+	:root {
+		--amount-of-color-rows: <%= rowAmt %>;
+		--amount-of-number-boxes-in-row: <%= colAmt %>;
+		--white-dice-amt: <%= wDiceAmt %>;
+	}
+</style>
+
+</head>
+
+<body>
+    <div class='board'>
+    
+    	<div id='gameTitle'>
+    		<span id='name'>QWIXX</span> <span class='brand'>G<span id='bigBrand'>ame</span>WRIGHT</span><span id='outlineBox'>At least 5 X's</span>
+    	</div>
+
+    	<%_ for(i = 0; i < rowAmt / 2; ++i) { _%>
+        <div class='colorRow <%= colors[i % 8] %>'>
+            <img src="/image/blackTriangle.png" class='image' alt="Black triangle arrow">
+            <span id='row<%= i + 1 %>-col1' class='numberBox firstBox'><%= 2 %></span>
+            <%_ for(j = 3; j <= colAmt; ++j) { -%>
+       		<span id='row<%= i + 1 %>-col<%= j - 1 %>' class='numberBox'><%= j %></span>
+            <%_ } _%>
+            <span id='row<%= i + 1 %>-lockBox' class='numberBox lockBox'>&#128274</span>
+        </div>
+        
+        <%_ } _%>
+        <%_ for(; i < rowAmt; ++i) { _%>
+        <div class='colorRow <%= colors[i % 8] %>'>
+            <img src="/image/blackTriangle.png" class='image' alt="Black triangle arrow">
+            <span id='row<%= i + 1 %>-col1' class='numberBox firstBox'><%= colAmt %></span>
+            <%_ for(j = colAmt - 1; j >= 2; --j) { _%>
+       		<span id='row<%= i + 1 %>-col<%= colAmt - j + 1 %>' class='numberBox'><%= j %></span>
+            <%_ } _%>
+            <span id='row<%= i + 1 %>-lockBox' class='numberBox lockBox'>&#128274</span>
+        </div>
+        
+        <%_ } _%>
+
+        <div class='dominoRow'>
+        	<span class='pointDomino'><div id='X'>X</div><div id='pointLine'></div>points</span>
+        	<%_ for (i = 1; i <= colAmt; ++i) { _%>
+        	<%_ sum += i _%>
+        	<span  class='dominoBox'><%= i %>x<div class='dominoLine'></div><%= sum %></span>
+        	<%_ } _%>
+        	<span class='diceArea'><span id='crossoutX'>&#10007</span>&#127922 = -5<br><div id = 'penaltyBox1' class='diceBox'></div><div id = 'penaltyBox2' class='diceBox'></div><div id = 'penaltyBox3' class='diceBox'></div><div id = 'penaltyBox4' class='diceBox'></div></span>
+        </div>
+        
+        <div class= 'totalsRow'>
+        	<div>
+		       	<span class='totalWords firstWord'>totals</span>
+		       	<%_ for (i = 0; i < rowAmt; ++i) { _%>
+		       	<span id='totalBox<%= i + 1%>' class='totalBox <%= colors[i % 8] %>'>&nbsp</span>
+		       	<%_ if (i !== rowAmt - 1) { _%>
+		       	<span>+</span>
+		       	<%_ } else { _%>
+		       	<span>-</span>
+		       	<%_ } _%>
+		       	<%_ } _%>
+		       	<span id='penaltyTotalBox' class='totalBox white'>&nbsp</span>
+		       	<span class='totalWords'>=</span>
+		       	<span id='finalTotalBox' class='totalBox white'>&nbsp</span>
+	       	</div>
+        </div>
+        <div class='totalsRow'>
+	        <div>
+	        	<%_ for (i = 0; i < wDiceAmt; ++i) { _%>
+	            <span id='die-w<%= i %>' class='die white'>x</span>
+	            <%_ } _%>
+	            <%_ for (i = 0; i < rowAmt; ++i) { _%>
+	            <span id='die-<%= i %>' class='die <%= colors[i % 8] %>'>x</span>
+	            <%_ } _%>
+	            <button id='roll' class='button'>Roll</button>
+	            <button id='passPhase1' class='button'>Pass On Phase 1</button>
+	        </div>
+	      
+        </div>
+    </div>
+
+    <script type="module" src='/js/Qwixx.js'></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,359 @@
+/*Trevor Foland*/
+@charset "ISO-8859-1";
+
+:root {
+	--red-color: #ea1515;
+	--light-red-color: #ffcccc;
+	--yellow-color: #fede01;
+	--light-yellow-color: #ffffcc;
+	--green-color: #009933;
+	--light-green-color: #ccffcc;
+	--blue-color: #0066cc;
+	--light-blue-color: #ccccff;
+	--purple-color: #800080;
+	--light-purple-color: #ffccff;
+	--orange-color: #ff8000;
+	--light-orange-color: #ffe6cc;
+	--brown-color: #996633;
+	--light-brown-color: #f2e6d9;
+	--aquamarine-color: #00ffcc;
+	--light-aquamarine-color: #ccfff5;
+	--white-color: #ffffff;
+	--gray-color: #a6a6a6;
+	--black-color: #000000;
+	--color-row-height: 50px;
+	--color-row-left-margin: 30px;
+	--color-row-right-margin: 70px;
+	--color-row-bottom-margin: 10px;
+	--number-box-width: 35px;
+	--number-box-left-margin: 10px;
+	--lower-rows-indent-margin: calc(var(--color-row-left-margin) + 5px);
+	--board-width: calc(calc(var(--number-box-width) + var(--number-box-left-margin)) * var(--amount-of-number-boxes-in-row) + var(--number-box-left-margin) + var(--color-row-left-margin) + var(--color-row-right-margin));
+	--outline-box-height: calc(var(--color-row-height) * var(--amount-of-color-rows) + var(--color-row-bottom-margin) * var(--amount-of-color-rows) + 10px);
+}
+
+.image {
+	position: absolute;
+	display: inline;
+	top: calc(50% - calc(var(--number-box-width) / 4));
+	left: -20px;
+	width: 30px;
+	height: 20px;
+	transform: rotate(90deg);
+}
+
+.board {
+	margin-top: 15px;
+	position: relative;
+	width: var(--board-width);
+	background-color: #E8E8E8;
+}
+
+.brand {
+	font-family: "Carter One";
+	font-size: 14px;
+}
+
+.colorRow {
+	position: relative;
+	display: flex;
+	margin-left: var(--color-row-left-margin);
+	margin-right: var(--color-row-right-margin);
+	margin-bottom: var(--color-row-bottom-margin);
+	height: var(--color-row-height);
+	border-radius: 4px;
+}
+
+.numberBox {
+	line-height: 35px;
+	font-size: 25px;
+	margin-left: var(--number-box-left-margin);
+	display: inline-block;
+	text-align: center;
+	width: var(--number-box-width);
+	height: var(--number-box-width);
+	margin-top: 7.5px;
+	border-radius: 4px;
+	z-index: 2;
+}
+
+.lockBox {
+	margin-right: var(--number-box-left-margin);
+	border-radius: 20px;
+}
+
+.strike {
+	background-image: url("/image/X-Out.png");
+	background-size: 100% 100%;
+}
+
+.red {
+	color: var(--red-color);
+	background-color: var(--red-color);
+}
+
+.yellow {
+	color: var(--yellow-color);
+	background-color: var(--yellow-color);
+}
+
+.green {
+	color: var(--green-color);
+	background-color: var(--green-color);
+}
+
+.blue {
+	color: var(--blue-color);
+	background-color: var(--blue-color);
+}
+
+.purple {
+	color: var(--purple-color);
+	background-color: var(--purple-color);
+}
+
+.orange {
+	color: var(--orange-color);
+	background-color: var(--orange-color);
+}
+
+.brown {
+	color: var(--brown-color);
+	background-color: var(--brown-color);
+}
+
+.aquamarine {
+	color: var(--aquamarine-color);
+	background-color: var(--aquamarine-color);
+}
+
+.white{
+	color: var(--black-color);
+	background-color: var(--white-color);
+}
+
+.red .numberBox {
+	background-color: var(--light-red-color);
+}
+
+.yellow .numberBox {
+	background-color: var(--light-yellow-color);
+}
+
+.green .numberBox {
+	background-color: var(--light-green-color);
+}
+
+.blue .numberBox {
+	background-color: var(--light-blue-color);
+}
+
+.purple .numberBox {
+	background-color: var(--light-purple-color);
+}
+
+.orange .numberBox {
+	background-color: var(--light-orange-color);
+}
+
+.brown .numberBox {
+	background-color: var(--light-brown-color);
+}
+
+.aquamarine .numberBox {
+	background-color: var(--light-aquamarine-color);
+}
+
+.dominoRow {
+	display: flex;
+	margin-top: 20px;
+	margin-left: var(--lower-rows-indent-margin);
+	margin-bottom: 10px;
+}
+
+.pointDomino {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 12px;
+}
+
+.dominoBox {
+	display: inline-block;
+	text-align: center;
+	width: 25px;
+	height: 40px;
+	border: 1px solid var(--black-color);
+	border-radius: 4px;
+	background-color: var(--white-color);
+	margin-left: 5px;
+}
+
+.dominoLine {
+	margin-top: 1px;
+	width: 25px;
+	height: 0px;
+	border-bottom: 2px solid var(--black-color);
+}
+
+.diceArea {
+	display: inline-block;
+	position: relative;
+	margin-left: 10px;
+	text-align: center;
+}
+
+.dicebox {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid;
+	border-radius: 4px;
+	background-color: var(--white-color);
+	margin-left: 5px;
+}
+
+.totalsRow {
+	display: flex;
+	background-color: var(--gray-color);
+}
+
+.firstWord {
+	margin-left: var(--lower-rows-indent-margin);
+}
+
+.totalBox {
+	margin-top: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 15px;
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	border: 2px solid;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.totalBox.red {
+	background-color: var(--light-red-color);
+}
+
+.totalBox.yellow {
+	background-color: var(--light-yellow-color);
+}
+
+.totalBox.green {
+	background-color: var(--light-green-color);
+}
+
+.totalBox.blue {
+	background-color: var(--light-blue-color);
+}
+
+.totalBox.purple {
+	background-color: var(--light-purple-color);
+}
+
+.totalBox.orange {
+	background-color: var(--light-orange-color);
+}
+
+.totalBox.brown {
+	background-color: var(--light-brown-color);
+}
+
+.totalBox.aquamarine {
+	background-color: var(--light-aquamarine-color);
+}
+
+.totalBox.white {
+	background-color: var(--white-color);
+}
+
+.die {
+	display: inline-block;
+	width: 30px;
+	line-height: 30px;
+	border: 1px solid var(--black-color);
+	border-radius: 7px;
+	text-align: center;
+	margin: 0px 4px 15px 4px;
+	color: var(--black-color);
+	font-size: 16px;
+}
+
+.button {
+	margin-left: 12px;
+	margin-bottom: 15px;
+	border: 1px solid var(--black-color);
+	font-size: 16px;
+	height: 25px;
+	vertical-align: bottom;
+	display: none;
+}
+
+#X {
+	margin: auto;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid;
+	border-radius: 4px;
+	width: 20px;
+	background-color: var(--white-color);
+}
+
+#pointLine {
+	margin: auto;
+	width: 25px;
+	height: 3px;
+	border-bottom: 1px solid var(--black-color);
+}
+
+#name {
+	font-family: "Baloo Chettan"; 
+}
+
+#bigBrand {
+	font-size: 17px;
+}
+
+#gameTitle {
+	display: inline-block;
+	margin-left: calc(var(--color-row-left-margin) + 20px);
+	margin-top: 10px;
+}
+
+#crossoutX {
+	position: absolute;
+	left: 33px;
+	color: var(--red-color);
+}
+
+#finalTotalBox {
+	width: 80px;
+}
+
+#outlineBox {
+	font-size: 12px;
+	margin-top: 10px;
+	display: inline-block;
+	color: var(--black-color);
+	position: absolute;
+	text-align: center;
+	right: 75px;
+	width: 85px;
+	height: var(--outline-box-height);
+	border: 2px solid;
+	border-radius: 4px;
+	z-index: 1;
+}
+
+#die-w0{
+	margin-left: var(--lower-rows-indent-margin);
+}
+
+#roll {
+	width: 60px;
+	display: initial;
+}
